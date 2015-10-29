@@ -30,24 +30,49 @@ void myitob(int n, char s[], int b)
 {
 
     int i = 0;
-    while(n != 0){
-        s[i] = n%b + '0';
-        n = n/b;
-        i++;
+
+    while((n /= b) > 0){
+        s[i++] = n%b + '0';
     }
+	
     s[i] = '\0';
     reverse(s, i);
 }
 
+//another way to count that
+void myitob_2(int n, char s[], int b)
+{
+	int i= 0,temp;
+	
+	while(n != 0){
+		temp = n/b;
+		s[i] = n - temp * b + '0';
+		n = temp;
+		i++;
+	}
+	
+	s[i] = '\0';
+	reverse(s,i);
+}
+
+
 
 void myitoa(int n, char s[], int width)
 {
-    int i = 0;
-    while(n != 0){
-        s[i] = n%10 + '0';
-        n = n/10;
-        i++;
+    int i = 0,sign = 0;
+
+	if(n < 0){
+		n = -n;
+		sign = -1;
+	}
+
+    while((n/=10)!= 0){
+        s[i++] = n%10 + '0';
     }
+
+	if(sign < 0)
+		s[i++] = '-';
+
     //if not meet the least width,add some blank spaces
     if(i < width){
         while(i < width){
@@ -63,10 +88,10 @@ int main(int argc, char const *argv[])
 {
     char s[MAXLEN] = {0};
 
-    //myitob(24,s,2);
-    myitoa(24,s,6);
-    //printf("24 convert to binary is %s\n",s);  //result: 11000
-    printf("24 convert to string is |%s|\n",s);  //result: |    24|
+    myitob_2(24,s,16);
+    //myitoa(24,s,6);
+    printf("24 convert to binary is %s\n",s);  //result: 11000
+    //printf("24 convert to string is |%s|\n",s);  //result: |    24|
 
     return 0;
 }
