@@ -24,13 +24,14 @@ function InsertNewOne()
 function usage ()
 {
 	echo "Usage: gatherUrl [-n|i] description url "
+	echo "       gatherUrl -u comment"
 	echo ""
 	echo "Example:"
 	echo -e "\t gatherUrl -n github_link https://github.com/JesseEisen"
 	exit -1
 }
 
-if [ "$#" -ne 3 ];then
+if [ "$#" -gt 3 ];then
    usage
 fi   
 
@@ -48,9 +49,17 @@ case $1 in
 	-i) 
 		InsertNewOne "$item"
 	;;
+	-u)
+		git pull
+		git add .
+		git commit -m "$2"
+		git push -u origin gh-pages
+		echo "push to github done"
+		;;
 	*)  echo "wrong flag"
 		usage
 	;;
 esac
 
 echo "done"
+
