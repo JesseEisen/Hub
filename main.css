@@ -1,20 +1,42 @@
 body {
-	font-family: Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Oxygen","Ubuntu","Cantarell","Open Sans",sans-serif;
+	font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
 
 }
 
-html, body{
-	height:100%
+
+.header{
+	background-color: #26292b;
+	color:white;
+
+}
+
+.header {
+  overflow: hidden;
+}
+
+
+.header h1 {
+  font-family: Trebuchet MS,Helvetica Neue,Helvetica,Arial,sans-serif ;
+  text-align: center;
+  font-weight: normal;
+  font-size: 2.6rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+
 }
 
 a {
 	position: relative;
 	color: #000;
 	text-decoration: none;
+	font-size: 1.21rem;
 }
 
 a:hover {
-	color: #000;
+	color: #f54545;
 }
 
 a:before {
@@ -24,7 +46,7 @@ a:before {
 	height: 2px;
 	bottom: 0;
 	left: 0;
-	background-color: #000;
+	background-color: #f54545;
 	visibility: hidden;
 	-webkit-transform: scaleX(0);
 	transform: scaleX(0);
@@ -36,4 +58,81 @@ a:hover:before {
 	visibility: visible;
 	-webkit-transform: scaleX(1);
 	transform: scaleX(1);
+}
+
+.content {
+  max-width: 40rem;
+  margin: 3rem auto;
+  word-spacing: 0.04rem;
+  letter-spacing: -0.01rem;
+  line-height: 1.5;
+}
+
+.content li p {
+  text-indent: inherit;
+  margin: 0;
+}
+
+.content ul {
+  padding-left: 2.5rem;
+}
+
+.content li {
+  font-family: 'Trebuchet MS', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: bold;
+  margin: 0.25rem 0;
+  line-height: 1.5;
+}
+
+.content h2,
+.content h3{
+  font-family: 'Trebuchet MS', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+.content h2 {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 0.1rem solid #E0E0E0;
+}
+
+.diary h3 {
+  font-size: 1.4rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+footer {
+  font-family: 'Trebuchet MS', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  margin: 3rem auto;
+  text-align: center;
+  color: #666;
+
+}
+
+.footer .author a {
+  margin: auto 0.5rem;
+}
+
+.footer a {
+  font-size: 1rem;
+  text-decoration: underline;
+  -webkit-transition: all 0.2s ease-out;
+          transition: all 0.2s ease-out;
+}
+
+.footer a:link,
+.footer a:visited {
+  color: #666;
+}
+
+.footer a:hover,
+.footer a:active {
+  color: #939393;
+}
+
+.footer p {
+  margin: 0;
 }
