@@ -23,6 +23,7 @@ function usage ()
 {
 	echo "Usage: gatherUrl [-n|i] description url "
 	echo "       gatherUrl -u comment"
+	echo "       gatherUrl -s"
 	echo ""
 	echo "Example:"
 	echo -e "\t gatherUrl -n github_link https://github.com/JesseEisen"
@@ -80,6 +81,9 @@ case $1 in
 	-s)
 		current="$(pwd)"
 		echo "export DIR_HUB=\"$current\"" >> "$SDIR"
+		;;
+	-h)
+		usage
 		;;
 	*)  echo "wrong flag"
 		usage
