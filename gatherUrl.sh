@@ -53,7 +53,7 @@ fi
 dates=`date +%F_%b_%a | tr '-' '.'|tr '_' ' '`
 header2=" <h2>""$dates""</h2><ul>"
 desc=`echo "$2" | tr '_' " "`
-item=" <li><a herf=\""$3"\">"$desc"</a></li>"
+item=" <li><a href=\""$3"\">"$desc"</a></li>"
 end=" </ul>"
 SDIR=~/.gudir
 touch "$SDIR"
