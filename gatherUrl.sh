@@ -6,10 +6,8 @@
 function CreateNewDay()
 {
 	LineNo=`grep -n content index.html | cut -b 1,2`
-	echo "$1"
 	sed -i "${LineNo} a${1}" index.html
 	let LineNo=LineNo+1
-	echo "$2"
 	sed -i "${LineNo} a${2}" index.html
 	let LineNo=LineNo+1
 	sed -i "${LineNo} a${3}" index.html
@@ -31,6 +29,22 @@ function usage ()
 	exit -1
 }
 
+function gotodir()
+{
+	source "$SDIR"
+	target="$(eval $(echo echo $(echo \$DIR_HUB)))"
+	if [ -d "$target" ];then
+		cd "$target"
+	elif [ -n "$target" ];then
+		echo "please use gatherUrl -s first"
+	fi
+}
+
+function goback()
+{
+	cd -
+}
+
 if [ "$#" -gt 3 ];then
    usage
 fi   
@@ -40,21 +54,32 @@ header2=" <h2>""$dates""</h2><ul>"
 desc=`echo "$2" | tr '_' " "`
 item=" <li><a herf=\""$3"\">"$desc"</a></li>"
 end=" </ul>"
-
+SDIR=~/.gudir
+touch "$SDIR"
 
 case $1 in
 	-n) 
+		gotodir
 		CreateNewDay "$header2" "$item" "$end"
+		goback
 	;;
 	-i) 
+		gotodir
 		InsertNewOne "$item"
+		goback
 	;;
 	-u)
+		gotodir
 		git pull
 		git add .
 		git commit -m "$2"
 		git push -u origin gh-pages
+		goback
 		echo "push to github done"
+		;;
+	-s)
+		current="$(pwd)"
+		echo "export DIR_HUB=\"$current\"" >> "$SDIR"
 		;;
 	*)  echo "wrong flag"
 		usage
