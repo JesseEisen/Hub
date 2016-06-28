@@ -5,12 +5,14 @@
 
 function CreateNewDay()
 {
-	LineNo=`grep -n content index.html | cut -b 1,2`
-	sed -i "${LineNo} a${1}" index.html
+	LineNo=`grep -n content index.html |head -1| cut -b 1,2`
+	sed -i "$LineNo a${1}" index.html
 	let LineNo=LineNo+1
-	sed -i "${LineNo} a${2}" index.html
+	#LineNo=$(($LineNo+1))
+	sed -i "$LineNo a${2}" index.html
 	let LineNo=LineNo+1
-	sed -i "${LineNo} a${3}" index.html
+	#LineNo=$(($LineNo+1))
+	sed -i "$LineNo a${3}" index.html
 }
 
 function InsertNewOne()
